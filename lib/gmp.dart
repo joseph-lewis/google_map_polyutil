@@ -17,7 +17,8 @@ class GMP {
       "geodesic": geodesic
     };
 
-    return await _channel.invokeMethod("containsLocation", args);
+    return await (_channel.invokeMethod("containsLocation", args)
+        as Future<bool>);
   }
 
   static Future<List<LatLng>> decode(String encodedPath) async {
@@ -37,7 +38,8 @@ class GMP {
 
     final args = {"p": mapPoint, "start": mapStart, "end": mapEnd};
 
-    return await _channel.invokeMethod("distanceToLine", args);
+    return await (_channel.invokeMethod("distanceToLine", args)
+        as Future<double>);
   }
 
   static Future<String> encode(List<LatLng> path) async {
@@ -45,7 +47,7 @@ class GMP {
 
     final args = {"path": mapPath};
 
-    return await _channel.invokeMethod("encode", args);
+    return await (_channel.invokeMethod("encode", args) as Future<String>);
   }
 
   static Future<bool> isClosedPolygon(List<LatLng> poly) async {
@@ -53,7 +55,8 @@ class GMP {
 
     final args = {"poly": mapPoly};
 
-    return await _channel.invokeMethod("isClosedPolygon", args);
+    return await (_channel.invokeMethod("isClosedPolygon", args)
+        as Future<bool>);
   }
 
   static Future<bool> isLocationOnEdge(LatLng point, List<LatLng> polygon,
@@ -68,7 +71,8 @@ class GMP {
       "tolerance": tolerance
     };
 
-    return await _channel.invokeMethod("isLocationOnEdge", args);
+    return await (_channel.invokeMethod("isLocationOnEdge", args)
+        as Future<bool>);
   }
 
   static Future<bool> isLocationOnPath(LatLng point, List<LatLng> polyline,
@@ -83,7 +87,8 @@ class GMP {
       "tolerance": tolerance
     };
 
-    return await _channel.invokeMethod("isLocationOnPath", args);
+    return await (_channel.invokeMethod("isLocationOnPath", args)
+        as Future<bool>);
   }
 
   static Future<List<LatLng>> simplify(
