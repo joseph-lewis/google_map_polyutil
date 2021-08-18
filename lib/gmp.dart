@@ -87,8 +87,7 @@ class GMP {
       "tolerance": tolerance
     };
 
-    return await (_channel.invokeMethod("isLocationOnPath", args)
-        as Future<bool>);
+    return await (_channel.invokeMethod("isLocationOnPath", args));
   }
 
   static Future<List<LatLng>> simplify(
