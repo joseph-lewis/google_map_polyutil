@@ -17,8 +17,8 @@ class GMP {
       "geodesic": geodesic
     };
 
-    return await (_channel.invokeMethod("containsLocation", args)
-        as Future<bool>);
+    var t = await (_channel.invokeMethod("containsLocation", args));
+    return t;
   }
 
   static Future<List<LatLng>> decode(String encodedPath) async {
@@ -54,9 +54,8 @@ class GMP {
     final mapPoly = Transform.listOfLatLngToHashMap(poly);
 
     final args = {"poly": mapPoly};
-
-    return await (_channel.invokeMethod("isClosedPolygon", args)
-        as Future<bool>);
+    var t = await (_channel.invokeMethod("isClosedPolygon", args));
+    return t;
   }
 
   static Future<bool> isLocationOnEdge(LatLng point, List<LatLng> polygon,
